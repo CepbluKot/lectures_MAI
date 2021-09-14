@@ -1,53 +1,27 @@
 #include <iostream>
-#include <cstring>
-using namespace std;
 
-class FooString
-{
-private:
-    char* buf;
-public:
-    FooString(char* tbuf) 
-    {
-        buf = new char[strlen(tbuf) + 1];
-        for (int i = 0; i < strlen(tbuf) + 1; i++) buf[i] = tbuf[i];
-        
-    }
-    ~FooString()
-    {
-        delete[] buf;
-    }
-    void show()
-    {
-        cout << buf;
-    }
-    
-    bool compare(char* str)
-    {
-        
-        if (strlen(buf) != strlen(str)) 
-        {
-            return false;
-        }
-        else 
-        {
-            for (int i = 0; i < strlen(buf) + 1; i++) {
-                if (buf[i] != str[i]) return false;
-            }
-        }
-        return true;
-    }
+int strConteins(char* a, char* str) {
+	int indexStr = 0;
+	int indexA = 0;
+	int start = 0;
+	bool startFlag = false;
+	bool endFlag = false;
+	int size = 0;
+	while (str[indexStr] != NULL) {
+		if (!startFlag && str[indexStr] == a[indexA]) {
+			start = indexStr;
+			startFlag = true;
+		}
+		if (startFlag && a[indexA + 1] == NULL && a[indexA] == str[indexStr]) return start;
 
-   
-};
-
-
-
-int main()
-{
-   char stri[10] = "abc";
-   char capi[10] = "adc";
-    FooString lol(stri);
-    cout << lol.compare(capi);
-    return 0;
+		else if (startFlag && str[indexStr + 1] != a[indexA + 1]) {
+			startFlag = false;
+			indexA = 0;
+		}
+		else if (a[indexA] == str[indexStr]) {
+			indexA += 1;
+		}
+		indexStr += 1;
+	}
+	return -1;
 }
