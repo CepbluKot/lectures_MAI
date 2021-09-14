@@ -9,9 +9,8 @@ private:
 public:
     FooString(char* tbuf) 
     {
-        int size = strlen(buf) + 1;
-        buf = new char[size];
-        cout << size;
+        buf = new char[strlen(tbuf) + 1];
+        for (int i = 0; i < strlen(tbuf) + 1; i++) buf[i] = tbuf[i];
         
     }
     ~FooString()
@@ -20,12 +19,23 @@ public:
     }
     void show()
     {
-        
+        cout << buf;
     }
     
-    bool compare(FooString str)
+    bool compare(char* str)
     {
-
+        
+        if (strlen(buf) != strlen(str)) 
+        {
+            return false;
+        }
+        else 
+        {
+            for (int i = 0; i < strlen(buf) + 1; i++) {
+                if (buf[i] != str[i]) return false;
+            }
+        }
+        return true;
     }
 
    
@@ -35,8 +45,9 @@ public:
 
 int main()
 {
-   char str[10] = "abc";
-   
-    FooString lol(str);
+   char stri[10] = "abc";
+   char capi[10] = "adc";
+    FooString lol(stri);
+    cout << lol.compare(capi);
     return 0;
 }
