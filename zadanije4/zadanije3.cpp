@@ -38,8 +38,21 @@ public:
   }
 };
 
+struct ConnectionList
+{
+  Protocol *mas[100];
+  int count = 0;
+};
+
+void addProtocol(ConnectionList *p, Protocol *newProtocol)
+{
+}
+
 int main(int argc, char **argv)
 {
+  BinaryProtocol bin;
+  HexProtocol hex;
+  char sample[9] = "software";
   std::string param = argv[1];
   std::ifstream in(param);
   std::string line;
@@ -48,7 +61,11 @@ int main(int argc, char **argv)
   {
     while (getline(in, line))
     {
-      // do smth
+      if (line == "BinaryProtocol")
+        bin.send(sample, 9);
+      std::cout << std::endl;
+      if (line == "HexProtocol")
+        hex.send(sample, 9);
     }
   }
 }
