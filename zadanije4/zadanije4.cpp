@@ -1,6 +1,5 @@
 #include <iostream>
-#include <string>
-#include <iostream>
+#include <stdlib.h>
 #include <fstream>
 
 
@@ -15,19 +14,15 @@ public:
 
 class BinaryProtocol : public Protocol
 {
-	void send(char* buf, int len)
-	{
-	
-	}
-}
+    void send(char*, int);
+};
 
 class HexProtocol : public Protocol
 {
-	void send(char* buf, int len)
-	{
-	
-	}
-}
+    
+    char* buffer;
+    void send(char*, int);
+};
 
 void BinaryProtocol::send(char* buf, int len)
 {
@@ -36,7 +31,8 @@ void BinaryProtocol::send(char* buf, int len)
 
 void HexProtocol::send(char* buf, int len)
 {
-	
+    buffer = (char*) malloc (len * sizeof(char));
+    buffer = buf;
 }
 
 int main(){
