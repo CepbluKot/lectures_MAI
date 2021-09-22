@@ -46,12 +46,15 @@ struct ConnectionList
 
 void addProtocol(ConnectionList *p, Protocol *newProtocol)
 {
+  p.mas[p.count] = newProtocol;
+  p.count += 1;
 }
 
 int main(int argc, char **argv)
 {
   BinaryProtocol bin;
   HexProtocol hex;
+
   char sample[9] = "software";
   std::string param = argv[1];
   std::ifstream in(param);
