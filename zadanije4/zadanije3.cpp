@@ -3,7 +3,6 @@
 #include <fstream>
 #include <bitset>
 #include <string>
-#include <sstream>
 
 class Protocol
 {
