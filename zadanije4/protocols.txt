@@ -1,3 +1,0 @@
-BinaryProtocol
-HexProtocol
-HexProtocol
