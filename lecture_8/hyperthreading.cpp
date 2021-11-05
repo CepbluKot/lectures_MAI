@@ -47,7 +47,7 @@ void printData(std::vector<fullData> &memory)
     do
     {
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(65));
         sync.lock();
         back = memory.back();
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 {
     unsigned int start_time = clock();
     float t = 0;
-    float freq = 0.1;
+    float freq = 1;
     float h = 0;
     float v;
     float m = 0;
